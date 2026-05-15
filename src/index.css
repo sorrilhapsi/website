@@ -1,0 +1,105 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-distrampler: "Distrampler", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+  
+  --color-brand-brown: #422807;
+  --color-brand-beige: #FCe8c3;
+  --color-beige-light: #FFF5E1;
+  --color-beige-dark: #F7D6A4;
+  
+  --shadow-glass: 
+    0 8px 32px 0 rgba(66, 40, 7, 0.1);
+}
+
+@font-face {
+  font-family: 'Distrampler';
+  src: url('/Distrampler.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  @apply bg-brand-beige text-brand-brown font-distrampler overflow-x-hidden antialiased selection:bg-transparent selection:text-current;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-brand-beige);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-brown);
+  border: 3px solid var(--color-brand-beige);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2d1a05; /* Slightly darker brown */
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-brand-brown) var(--color-brand-beige);
+}
+
+.glass-card {
+  @apply bg-white/20 backdrop-blur-lg shadow-glass rounded-[2.5rem];
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-perspective: 1000;
+  perspective: 1000;
+}
+
+.glass-button {
+  @apply bg-white/10 backdrop-blur-md rounded-full px-8 py-3 transition-[background-color,color,border-color,box-shadow] duration-300 hover:bg-brand-brown hover:text-white hover:scale-105 active:scale-95;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-perspective: 1000;
+  perspective: 1000;
+}
+
+.force-gpu {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+.minimal-btn {
+  @apply rounded-full px-10 py-5 text-xl font-medium tracking-wider transition-all duration-300 hover:bg-brand-brown hover:text-brand-beige uppercase;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  h1, h2, h3, h4, h5, h6, button, a {
+    @apply font-distrampler tracking-tight;
+  }
+}
