@@ -218,9 +218,8 @@ export default function App() {
           id="home"
           className="relative min-h-[100vh] flex flex-col pt-[30px] overflow-hidden"
         >
-          {/* ↓ ALTERAÇÃO: md:pl-[430px] → md:pl-[280px], adicionado md:pt-[40px], md:max-w-[800px] → md:max-w-[620px] */}
           <motion.div
-            className="px-[30px] md:pl-[280px] md:pt-[40px] relative z-10 flex flex-col items-start force-gpu md:max-w-[620px]"
+            className="px-[30px] md:pl-[430px] relative z-10 flex flex-col items-start force-gpu md:max-w-[800px]"
             variants={heroContainerVariants}
             initial="hidden"
             animate="visible"
