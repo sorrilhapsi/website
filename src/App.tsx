@@ -43,12 +43,10 @@ export default function App() {
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Prevent F12
       if (e.key === "F12") {
         e.preventDefault();
         return false;
       }
-      // Prevent Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C, Ctrl+U
       if (
         e.ctrlKey &&
         e.shiftKey &&
@@ -57,7 +55,6 @@ export default function App() {
         e.preventDefault();
         return false;
       }
-      // Prevent Ctrl+U (View Source)
       if (e.ctrlKey && e.key === "u") {
         e.preventDefault();
         return false;
@@ -69,7 +66,7 @@ export default function App() {
 
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3500); // 3 seconds plus a little buffer
+    }, 3500);
 
     return () => {
       document.removeEventListener("contextmenu", handleContextMenu);
@@ -94,7 +91,7 @@ export default function App() {
       opacity: 1,
       transition: {
         staggerChildren: 0.25,
-        delayChildren: 3.5, // Starting after the intro
+        delayChildren: 3.5,
       },
     },
   };
@@ -213,19 +210,24 @@ export default function App() {
       </header>
 
       <main>
-        {/* HERO SECTION - REFINED */}
+        {/* HERO SECTION */}
         <section
           id="home"
           className="relative min-h-[100vh] flex flex-col pt-[30px] overflow-hidden"
         >
+          {/*
+            ALTERAÇÃO: adicionado md:-translate-x-[120px] md:-translate-y-[20px]
+            Isso move logotipo + slogan + botão para esquerda e para cima SOMENTE no desktop.
+            Todos os outros valores permanecem idênticos ao original.
+          */}
           <motion.div
-            className="px-[30px] md:pl-[430px] relative z-10 flex flex-col items-start force-gpu md:max-w-[800px]"
+            className="px-[30px] md:pl-[430px] md:-translate-x-[120px] md:-translate-y-[20px] relative z-10 flex flex-col items-start force-gpu md:max-w-[800px]"
             variants={heroContainerVariants}
             initial="hidden"
             animate="visible"
             viewport={{ once: true, amount: 0.1 }}
           >
-            {/* logotipo.png now part of the vertical flow */}
+            {/* logotipo.png */}
             <motion.div
               initial={{ y: -50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -289,7 +291,7 @@ export default function App() {
           </motion.div>
         </section>
 
-        {/* SOBRE SECTION - Refined Biography */}
+        {/* SOBRE SECTION */}
         <section
           id="sobre"
           className="relative z-10 py-32 px-[30px] md:px-20 bg-brand-brown text-brand-beige"
@@ -336,7 +338,7 @@ export default function App() {
           </div>
         </section>
 
-        {/* TOPICS SECTION - Inverted Colors dedicated section */}
+        {/* TOPICS SECTION */}
         <section
           id="topicos"
           className="relative z-10 py-24 px-[30px] md:px-20 bg-brand-beige text-brand-brown"
@@ -371,7 +373,7 @@ export default function App() {
           </div>
         </section>
 
-        {/* SERVICOS SECTION - Brief & Minimal */}
+        {/* SERVICOS SECTION */}
         <section
           id="servicos"
           className="relative z-10 py-20 px-10 md:px-20 bg-brand-brown text-brand-beige"
@@ -390,28 +392,19 @@ export default function App() {
               Especialidades
             </motion.h2>
             <div className="flex flex-wrap justify-center gap-20">
-              <motion.div
-                variants={itemVariants}
-                className="space-y-2 force-gpu"
-              >
+              <motion.div variants={itemVariants} className="space-y-2 force-gpu">
                 <span className="text-8xl opacity-10">01</span>
                 <p className="text-2xl font-medium uppercase tracking-widest font-montserrat">
                   AUTOCONHECIMENTO
                 </p>
               </motion.div>
-              <motion.div
-                variants={itemVariants}
-                className="space-y-2 force-gpu"
-              >
+              <motion.div variants={itemVariants} className="space-y-2 force-gpu">
                 <span className="text-8xl opacity-10">02</span>
                 <p className="text-2xl font-medium uppercase tracking-widest font-montserrat">
                   Autoestima
                 </p>
               </motion.div>
-              <motion.div
-                variants={itemVariants}
-                className="space-y-2 force-gpu"
-              >
+              <motion.div variants={itemVariants} className="space-y-2 force-gpu">
                 <span className="text-8xl opacity-10">03</span>
                 <p className="text-2xl font-medium uppercase tracking-widest font-montserrat">
                   Sobrecarga
@@ -421,7 +414,7 @@ export default function App() {
           </motion.div>
         </section>
 
-        {/* VIDEO SECTION - Spacing Reduced */}
+        {/* VIDEO SECTION */}
         <section className="relative z-10 pt-20 pb-10 px-10 md:px-20 bg-brand-beige">
           <div className="max-w-5xl mx-auto">
             <motion.div
@@ -443,7 +436,7 @@ export default function App() {
           </div>
         </section>
 
-        {/* CONTATO SECTION - Spacing Reduced */}
+        {/* CONTATO SECTION */}
         <section
           id="contato"
           className="relative z-10 py-10 pb-32 px-10 md:px-20 overflow-hidden bg-brand-beige"
@@ -574,7 +567,7 @@ export default function App() {
                   )}
                 </AnimatePresence>
 
-                {/* Secondary Social Links - Reduced Emphasis */}
+                {/* Secondary Social Links */}
                 <div className="pt-12 flex flex-nowrap gap-2 justify-start items-center opacity-40 border-t border-brand-brown/10 mt-6 md:gap-3 overflow-x-visible">
                   <motion.a
                     variants={itemVariants}
@@ -656,9 +649,8 @@ export default function App() {
         </section>
       </main>
 
-      {/* REFINED FOOTER */}
+      {/* FOOTER */}
       <footer className="relative z-10 flex flex-col items-center bg-brand-beige text-brand-brown pt-20 pb-20 px-10 overflow-hidden">
-        {/* logotipocompleto.png moved up (overlapping slightly) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
