@@ -215,11 +215,6 @@ export default function App() {
           id="home"
           className="relative min-h-[100vh] flex flex-col pt-[30px] overflow-hidden"
         >
-          {/*
-            ALTERAÇÃO: adicionado md:-translate-x-[120px] md:-translate-y-[20px]
-            Isso move logotipo + slogan + botão para esquerda e para cima SOMENTE no desktop.
-            Todos os outros valores permanecem idênticos ao original.
-          */}
           <motion.div
             className="px-[30px] md:pl-[430px] md:-translate-x-[120px] md:-translate-y-[20px] relative z-10 flex flex-col items-start force-gpu md:max-w-[800px]"
             variants={heroContainerVariants}
@@ -227,7 +222,6 @@ export default function App() {
             animate="visible"
             viewport={{ once: true, amount: 0.1 }}
           >
-            {/* logotipo.png */}
             <motion.div
               initial={{ y: -50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -274,9 +268,9 @@ export default function App() {
             />
           </div>
 
-          {/* Scroll Indicator */}
+          {/* Scroll Indicator — ALTERAÇÃO: adicionado md:translate-y-[10px] para descer 10px só no desktop */}
           <motion.div
-            className="absolute bottom-10 left-[30px] md:left-[430px] z-20 flex flex-col items-center gap-2 text-brand-brown opacity-40 force-gpu"
+            className="absolute bottom-10 left-[30px] md:left-[310px] md:translate-y-[10px] z-20 flex flex-col items-center gap-2 text-brand-brown opacity-40 force-gpu"
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.4 }}
             transition={{ delay: 5, duration: 1 }}
